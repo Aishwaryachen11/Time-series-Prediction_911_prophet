@@ -89,7 +89,7 @@ Prophet also visualized **component plots**, breaking down the forecast into **o
 To validate the model's forecasting performance, the following metrics were computed on the test period:
 - **Root Mean Squared Error (RMSE)**: Measures average prediction error in the same unit as the target (call volume). Lower RMSE means better prediction.
 - **Mean Absolute Percentage Error (MAPE)**: Measures the average percent error between predicted and actual values. More interpretable as a percentage.
-```python
+
 from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
 rmse = np.sqrt(mean_squared_error(actual, predicted))
 mape = mean_absolute_percentage_error(actual, predicted) * 100
