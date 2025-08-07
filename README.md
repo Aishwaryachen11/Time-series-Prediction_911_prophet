@@ -94,8 +94,6 @@ from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
 rmse = np.sqrt(mean_squared_error(actual, predicted))
 mape = mean_absolute_percentage_error(actual, predicted) * 100
 
-### 📊 Example Forecast Output
-```markdown
 ## 📊 Example Forecast Output
 Sample forecast values from the Prophet model (actual vs predicted):
 | Date       | Actual Calls | Predicted (yhat) | 95% CI (lower - upper) |
@@ -105,6 +103,55 @@ Sample forecast values from the Prophet model (actual vs predicted):
 | 2020-01-03 | 1,198        | 1,211            | 1,148 – 1,278           |
 
 > These predictions reflect realistic call volumes, and the confidence intervals help quantify forecast uncertainty.
+
+## 📊 Exploratory Data Analysis (EDA)
+A variety of visualizations were used to better understand temporal, categorical, and seasonal patterns in 911 emergency call data:
+
+### 1. Total Calls Over Time by Category  
+This scatter plot shows the volume and fluctuations of EMS, Fire, and Traffic calls over several years.  
+![Total Calls Over Time by Category](./Total calls Over time by category.png)
+
+### 2. Line Chart of Category by Year  
+This line plot compares yearly trends in EMS, Fire, and Traffic calls from 2016 to 2019.  
+![Line Chart of Category by Year](./Line chart of Category by Year.png)
+
+### 3. Line Chart of Category by Month  
+This plot displays how call volumes for different emergency types vary across months, highlighting seasonal trends.  
+![Line Chart of Category by Month](./Line chart of Category by Month.png)
+
+### 4. Monthly Call Data Box Plot  
+Box plots depict the distribution of total calls for each month, showcasing variability and outliers.  
+![Monthly Call Data Box Plot](./Monthly Call Data Box Plot.png)
+
+### 5. Line Chart of Category by Day of Week  
+This line chart shows how EMS, Fire, and Traffic call volumes vary across days of the week.  
+![Line Chart of Category by Day of Week](./Line Chart of Category by Day of Week.png)
+
+### 6. Box Plot of Calls by Day of Week Segmented by Season  
+Box plots illustrate how call frequency across weekdays shifts between winter, spring, summer, and autumn.  
+![Box Plot of Calls by day of week segmented by season](./Box Plot of Calls by day of week segmented by season.png)
+
+### 7. Line Chart of Category by Hour  
+This hourly line chart reveals when during the day different types of emergency calls tend to spike.  
+![Line Chart of Category by Hour](./Line Chart of Category by Hour.png)
+
+### 8. Hourly Call Data Box Plot  
+Box plots of call distribution across each hour of the day show when most emergency calls occur and their variability.  
+![Hourly Call Data Box Plot](./Hourly Call Data Box Plot.png)
+
+### 9. Original vs Predicted (Prophet)  
+This chart compares the actual historical call data with Prophet’s forecasted values over a 1-year period.  
+![Original Vs Predicted(Prophet)](./Original Vs Predicted(Prophet).png)
+
+### 10. Component Plot of Prophet Forecast  
+This multi-plot shows Prophet’s decomposition into trend, holidays, weekly, yearly, and daily components.  
+![Component Plot of Prophet Forecast](./Component Plot of Prophet forecast.png)
+
+### 11. Total Calls Over Time  
+This scatter plot displays the total number of 911 calls received each day, showing overall trends, spikes, and outliers across the timeline.  
+![Total Calls Over Time](./Total calls Over time.png)
+
+
 
 ## 🧠 Features Implemented
 - [x] Timestamp parsing and cleaning using `pd.to_datetime()`
