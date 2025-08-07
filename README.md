@@ -109,49 +109,47 @@ A variety of visualizations were used to better understand temporal, categorical
 
 ### 1. Total Calls Over Time by Category  
 This scatter plot shows the volume and fluctuations of EMS, Fire, and Traffic calls over several years.  
-![Total Calls Over Time by Category](./Total calls Over time by category.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Total%20calls%20Over%20time%20by%20category.png" alt="Model Architecture" width="350"/>
 
 ### 2. Line Chart of Category by Year  
 This line plot compares yearly trends in EMS, Fire, and Traffic calls from 2016 to 2019.  
-![Line Chart of Category by Year](./Line chart of Category by Year.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Line%20chart%20of%20Category%20by%20Year.png" alt="Model Architecture" width="350"/>
 
 ### 3. Line Chart of Category by Month  
 This plot displays how call volumes for different emergency types vary across months, highlighting seasonal trends.  
-![Line Chart of Category by Month](./Line chart of Category by Month.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Line%20chart%20of%20Category%20by%20Month.png" alt="Model Architecture" width="350"/>
 
 ### 4. Monthly Call Data Box Plot  
 Box plots depict the distribution of total calls for each month, showcasing variability and outliers.  
-![Monthly Call Data Box Plot](./Monthly Call Data Box Plot.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Monthly%20Call%20Data%20Box%20Plot.png" alt="Model Architecture" width="350"/>
 
 ### 5. Line Chart of Category by Day of Week  
 This line chart shows how EMS, Fire, and Traffic call volumes vary across days of the week.  
-![Line Chart of Category by Day of Week](./Line Chart of Category by Day of Week.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Line%20Chart%20of%20Category%20by%20Day%20of%20Week.png" alt="Model Architecture" width="350"/>
 
 ### 6. Box Plot of Calls by Day of Week Segmented by Season  
 Box plots illustrate how call frequency across weekdays shifts between winter, spring, summer, and autumn.  
-![Box Plot of Calls by day of week segmented by season](./Box Plot of Calls by day of week segmented by season.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Box%20Plot%20of%20Calls%20by%20day%20of%20week%20segmented%20by%20season.png" alt="Model Architecture" width="350"/>
 
 ### 7. Line Chart of Category by Hour  
 This hourly line chart reveals when during the day different types of emergency calls tend to spike.  
-![Line Chart of Category by Hour](./Line Chart of Category by Hour.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Line%20Chart%20of%20Category%20by%20Hour.png" alt="Model Architecture" width="350"/>
 
 ### 8. Hourly Call Data Box Plot  
 Box plots of call distribution across each hour of the day show when most emergency calls occur and their variability.  
-![Hourly Call Data Box Plot](./Hourly Call Data Box Plot.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Hourly%20Call%20Data%20Box%20Plot.png" alt="Model Architecture" width="350"/>
 
 ### 9. Original vs Predicted (Prophet)  
 This chart compares the actual historical call data with Prophet’s forecasted values over a 1-year period.  
-![Original Vs Predicted(Prophet)](./Original Vs Predicted(Prophet).png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Original%20Vs%20Predicted(Prophet).png" alt="Model Architecture" width="350"/>
 
 ### 10. Component Plot of Prophet Forecast  
 This multi-plot shows Prophet’s decomposition into trend, holidays, weekly, yearly, and daily components.  
-![Component Plot of Prophet Forecast](./Component Plot of Prophet forecast.png)
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Component%20Plot%20of%20Prophet%20forecast.png" alt="Model Architecture" width="350"/>
 
 ### 11. Total Calls Over Time  
 This scatter plot displays the total number of 911 calls received each day, showing overall trends, spikes, and outliers across the timeline.  
-![Total Calls Over Time](./Total calls Over time.png)
-
-
+<img src="https://github.com/Aishwaryachen11/Time-series-Prediction_911_prophet/blob/main/Total%20calls%20Over%20time.png" alt="Model Architecture" width="350"/>
 
 ## 🧠 Features Implemented
 - [x] Timestamp parsing and cleaning using `pd.to_datetime()`
