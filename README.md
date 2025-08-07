@@ -17,7 +17,7 @@ Prophet is favored because it provides:
 - **High interpretability** (you can see trend, yearly/weekly seasonality)
 - **Automatic handling** of missing values and holidays
 - **Minimal configuration**, making it ideal for analysts and developers
-- 
+  
 Prophet is an **additive model**, where the forecast is built from multiple components y(t) = g(t) + s(t) + h(t) + εt
 Where:
 - `g(t)` is the **trend** function modeling non-periodic changes
