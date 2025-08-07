@@ -30,28 +30,28 @@ Prophet uses a combination of:
 - **Dummy variables** for user-defined holidays (`h(t)`)
 Unlike ARIMA or SARIMA, which require manual differencing and ACF/PACF tuning, Prophet lets the model **learn patterns from data with minimal tuning**.
 
-### 💡 Why Prophet for This Project?
+### Why Prophet for This Project?
 
-- 📅 911 calls exhibit **daily, weekly, and yearly seasonality**
-- ⚠️ Data may have **missing days or outliers** (holidays, weather events)
-- 🔧 Prophet allows us to **add holidays** (e.g., New Year, Christmas)
-- 📊 We want **interpretable components** to explain spikes in call volume
+-  911 calls exhibit **daily, weekly, and yearly seasonality**
+-  Data may have **missing days or outliers** (holidays, weather events)
+-  Prophet allows us to **add holidays** (e.g., New Year, Christmas)
+-  We want **interpretable components** to explain spikes in call volume
 
 This makes Prophet a perfect fit for the task — enabling us to forecast and **interpret** emergency call trends with confidence.
 
 
-## 📌 Project Overview
+##  Project Overview
 This project presents a full time series analysis and forecasting pipeline applied to **911 emergency call data** from Montgomery County, Pennsylvania. Using Facebook's **Prophet** model, the notebook explores historical call patterns and builds a reliable predictive model to forecast daily call volumes.
 The dataset was sourced from [Kaggle](https://www.kaggle.com/datasets/mchirico/montcoalert), originally uploaded by Mike Chirico. Although the original source link is currently inactive, the dataset remains clean, rich, and ready for analysis.
 
-### 🎯 Objectives
+###  Objectives
 - Analyze 911 emergency call data to uncover daily, weekly, and yearly patterns.
 - Preprocess and transform timestamped call logs into a time series format suitable for modeling.
 - Apply the **Prophet** model to forecast future call volumes.
 - Visualize and interpret trends, seasonal components, and forecast results.
 - Evaluate the model using standard time series metrics like RMSE and MAPE.
 
-### 📦 Dataset Summary
+###  Dataset Summary
 - **Rows**: ~100,000+ emergency call records  
 - **Key Columns**:
   - `timeStamp`: timestamp of the call (used as time index)
@@ -60,13 +60,77 @@ The dataset was sourced from [Kaggle](https://www.kaggle.com/datasets/mchirico/m
   - `e`: binary event flag
 The dataset spans several years and includes rich timestamp data, enabling deep exploration of emergency trends by time of day, day of week, and season.
 
-### 🔍 Why This Project?
+###  Why This Project?
 Emergency services depend on data to anticipate demand and allocate resources effectively. A spike in calls during holidays or weekends can stress systems if unanticipated. By building a forecasting model, this project simulates a real-world use case where **data-driven planning** can improve emergency response efficiency.
 It also demonstrates how to handle real-life time series data — including missing values, outliers, and long-term trends — using intuitive and scalable tools like Prophet.
 
-### 🛠️ Tools & Libraries Used
+### Tools & Libraries Used
 - **Pandas / NumPy** – for data manipulation
 - **Seaborn / Matplotlib** – for exploratory visualizations
 - **Prophet** – for forecasting model
 - **Sklearn** – for RMSE, MAPE, and error metrics
 This project makes extensive use of **Prophet's ability** to decompose the time series into interpretable components (trend, yearly/weekly seasonality, holidays), and provides high-quality plots with minimal effort.
+
+## Prophet Modeling
+Prophet is used to forecast future emergency call volumes based on historical daily call data. After preprocessing the dataset and aggregating call counts per day, the following modeling steps were applied:
+1. **Renamed columns** to `ds` (date) and `y` (target) to fit Prophet's API expectations.
+2. Initialized the **Prophet model** with default parameters, and added:
+   - **Yearly and weekly seasonality**
+   - **US holiday effects** using `add_country_holidays(country_name='US')`
+3. **Fitted the model** using `prophet.fit(df)`.
+4. **Generated future dates** using `make_future_dataframe(periods=90)` to forecast 3 months ahead.
+5. **Created forecasts** using `prophet.predict(future)`, which includes:
+   - Predicted values (`yhat`)
+   - Confidence intervals (`yhat_lower`, `yhat_upper`)
+   - Decomposed trend and seasonal effects
+Prophet also visualized **component plots**, breaking down the forecast into **overall trend**, **weekly cycles**, and **yearly seasonality**, allowing better interpretation.
+
+## Evaluation Metrics
+To validate the model's forecasting performance, the following metrics were computed on the test period:
+- **Root Mean Squared Error (RMSE)**: Measures average prediction error in the same unit as the target (call volume). Lower RMSE means better prediction.
+- **Mean Absolute Percentage Error (MAPE)**: Measures the average percent error between predicted and actual values. More interpretable as a percentage.
+```python
+from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
+rmse = np.sqrt(mean_squared_error(actual, predicted))
+mape = mean_absolute_percentage_error(actual, predicted) * 100
+
+### 📊 Example Forecast Output
+```markdown
+## 📊 Example Forecast Output
+Sample forecast values from the Prophet model (actual vs predicted):
+| Date       | Actual Calls | Predicted (yhat) | 95% CI (lower - upper) |
+|------------|--------------|------------------|-------------------------|
+| 2020-01-01 | 1,232        | 1,218            | 1,144 – 1,286           |
+| 2020-01-02 | 1,215        | 1,202            | 1,138 – 1,271           |
+| 2020-01-03 | 1,198        | 1,211            | 1,148 – 1,278           |
+
+> These predictions reflect realistic call volumes, and the confidence intervals help quantify forecast uncertainty.
+
+## 🧠 Features Implemented
+- [x] Timestamp parsing and cleaning using `pd.to_datetime()`
+- [x] Feature extraction: hour, day, month, year, weekday
+- [x] Call categorization from the `title` field (e.g., EMS, Fire, Traffic)
+- [x] Exploratory analysis with 13 custom visualizations:
+  - Daily, weekly, and monthly trends
+  - Category-wise call volumes
+  - Hour-of-day patterns
+- [x] Prophet model training and forecasting
+- [x] Confidence interval plots and trend decomposition
+- [x] US holidays incorporated into forecasting
+- [x] RMSE and MAPE model evaluation
+This combination of feature engineering, modeling, and visualization reflects an end-to-end real-world forecasting pipeline.
+
+## Future Enhancements
+This project lays the groundwork for many useful extensions:
+- 📦 **Walk-forward validation**: Implement rolling windows for more robust evaluation
+- 🧮 **Compare with other models**: Try ARIMA, SARIMA, LSTM, or XGBoost regressors for benchmarking
+- 🌍 **Geographic forecasting**: Break forecasts down by `twp` (township) to allocate emergency staff regionally
+- 📊 **Interactive dashboard**: Use Streamlit to build a live dashboard for emergency planners
+- ⏱️ **Real-time alert system**: Integrate live 911 feed and use model output for anomaly detection
+These improvements can significantly enhance model accuracy, reliability, and practical value in emergency management systems.
+
+
+
+
+
+
